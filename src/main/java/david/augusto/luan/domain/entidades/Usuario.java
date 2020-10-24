@@ -6,6 +6,8 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
+import david.augusto.luan.domain.enums.Funcao;
+
 @Entity
 public class Usuario {
 	@Id
@@ -13,20 +15,30 @@ public class Usuario {
 	private String nome;
 	private String email;
 	private String senha;
+	private Funcao funcao;
 	private List<Pedido> pedidos;
 	private List<StatusPedido> statusPedidos;
 
-	public Usuario(Long id, String nome, String email, String senha, List<Pedido> pedidos,
+	public Usuario(Long id, String nome, String email, String senha, Funcao funcao, List<Pedido> pedidos,
 			List<StatusPedido> statusPedidos) {
 		this.id = id;
 		this.nome = nome;
 		this.email = email;
 		this.senha = senha;
+		this.funcao = funcao;
 		this.pedidos = new ArrayList<Pedido>();
 		this.statusPedidos = new ArrayList<>();
 	}
 
 	public Usuario() {
+	}
+
+	public Funcao getFuncao() {
+		return funcao;
+	}
+
+	public void setFuncao(Funcao funcao) {
+		this.funcao = funcao;
 	}
 
 	public List<StatusPedido> getStatusPedidos() {
