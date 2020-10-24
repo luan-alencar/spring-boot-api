@@ -4,18 +4,37 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
 
 @Entity
 public class Usuario {
-
+	@Id
 	private Long id;
 	private String nome;
 	private String email;
 	private String senha;
 	private List<Pedido> pedidos;
+	private List<StatusPedido> statusPedidos;
+
+	public Usuario(Long id, String nome, String email, String senha, List<Pedido> pedidos,
+			List<StatusPedido> statusPedidos) {
+		this.id = id;
+		this.nome = nome;
+		this.email = email;
+		this.senha = senha;
+		this.pedidos = new ArrayList<Pedido>();
+		this.statusPedidos = new ArrayList<>();
+	}
 
 	public Usuario() {
-		this.pedidos = new ArrayList<Pedido>();
+	}
+
+	public List<StatusPedido> getStatusPedidos() {
+		return statusPedidos;
+	}
+
+	public void setStatusPedidos(List<StatusPedido> statusPedidos) {
+		this.statusPedidos = statusPedidos;
 	}
 
 	public Long getId() {
